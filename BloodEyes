@@ -1,0 +1,8 @@
+local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/ZinXC2010/Eyes/main/Kil20health"))()
+local Configuration = {
+    Kill = true, -- change to "Damage = 10," for eyes, doesnt work on other entities
+    Speed = 160, -- 60 for rush, doesnt work on other entities
+    Time = 3 -- 5 for rush, doesnt work on other entities
+}
+
+EntitySpawner:Spawn("Eyes", Configuration)
