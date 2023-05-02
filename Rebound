@@ -1,5 +1,4 @@
 -- REBOUND --
-wait(85)
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 local part = Instance.new("Part")
 part.Name = "Bound"
