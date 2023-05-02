@@ -1,4 +1,3 @@
-wait(74)
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 wait(0.5)
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
