@@ -1,5 +1,4 @@
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-wait(0.5)
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
 game.Lighting.MainColorCorrection.Contrast = 0.2
 game.Lighting.MainColorCorrection.Saturation = -0.7
@@ -60,7 +59,7 @@ local entity = Creator.createEntity({
             Image2 = "https://tr.rbxcdn.com/1e7945796277100aec5f98858407b523/420/420/Decal/Png", -- Image2 url
             Shake = false,
             Sound1 = {
-                0, -- SoundId
+                5351101493, -- SoundId
                 { Volume = 0.5 }, -- Sound properties
             },
             Sound2 = {
@@ -154,10 +153,33 @@ TW:Play()
 	    ReSt.GameStats["Player_".. Plr.Name].Total.DeathCause.Value = "Rebound"
 		wait(0.5)
 		scare:Destroy()
-
 end
 
 ------------------------
 
 -- Run the created entity
 Creator.runEntity(entity)
+function createSound(id, volume, parent)
+	assert(id, "sound id wasn't given")
+	id = tostring(id):gsub("%D", "") --only keeping the numbers
+	assert(id ~= "", "sound id isn't a number") 
+	volume = volume or 10 --0.5 is the default volume
+	parent = parent or workspace --workspace is the default parent
+	local Sound = Instance.new("Sound") 
+	Sound.SoundId = "rbxassetid://"..id 
+	Sound.Volume = volume 
+	Sound.Parent = parent 
+	return Sound 
+end
+local Sound = createSound("rbxassetid://5408539313")
+Sound.Looped = false 
+Sound:Play() 
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 0.2
+game.Lighting.MainColorCorrection.Saturation = -0.7
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Contrast = 0}):Play()
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Saturation = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(0, 0, 255)})
+TW:Play()
