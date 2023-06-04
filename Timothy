@@ -1,0 +1,36 @@
+local a = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game
+require(a.RemoteListener.Modules.SpiderJumpscare)(require(a), workspace.CurrentRooms["0"].Assets.Dresser.DrawerContainer, 0.2)
+game.Players.LocalPlayer.Character.Humanoid.Health -= 5
+function createSound(id, volume, parent)
+	assert(id, "sound id wasn't given")
+	id = tostring(id):gsub("%D", "") --only keeping the numbers
+	assert(id ~= "", "sound id isn't a number") 
+	volume = volume or 1.5 --0.5 is the default volume
+	parent = parent or workspace --workspace is the default parent
+	local Sound = Instance.new("Sound") 
+	Sound.SoundId = "rbxassetid://"..id 
+	Sound.Volume = volume 
+	Sound.Parent = parent 
+	return Sound 
+end
+local Sound = createSound("rbxassetid://5869422451")
+Sound.Looped = false 
+Sound:Play() 
+if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+function createSound(id, volume, parent)
+	assert(id, "sound id wasn't given")
+	id = tostring(id):gsub("%D", "") --only keeping the numbers
+	assert(id ~= "", "sound id isn't a number") 
+	volume = volume or 1.5 --0.5 is the default volume
+	parent = parent or workspace --workspace is the default parent
+	local Sound = Instance.new("Sound") 
+	Sound.SoundId = "rbxassetid://"..id 
+	Sound.Volume = volume 
+	Sound.Parent = parent 
+	return Sound 
+end
+local Sound = createSound("rbxassetid://2941380564")
+Sound.Looped = false 
+Sound:Play() 
+firesignal(game:GetService("ReplicatedStorage").EntityInfo.DeathHint.OnClientEvent, {"LOL", "xDDDD", "ZinXC Didn't want you to die"},'Yellow')
+end
